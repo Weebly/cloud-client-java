@@ -87,8 +87,11 @@ public class CloudClient {
      *              string if the method is GET or DELETE, or in the request
      *              body if the method is POST, PUT, or PATCH.
      */
-    public CloudResponse makeRequest(String url, String method, HashMap<String,Object> data)
-            throws CloudException {
+    public CloudResponse makeRequest(
+        String url,
+        String method,
+        HashMap<String,Object> data
+    ) throws CloudException {
         //Set the timeout for requests to 3 seconds
         CloseableHttpClient httpClient = buildHttpClientWithTimeout(3 * 1000);
 
