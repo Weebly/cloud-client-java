@@ -179,6 +179,8 @@ public class CloudClient {
             makeHash(method + "\n" + url + "\n" + content)
         );
         request.addHeader("Content-type", "application/json");
+        request.addHeader("X-Client-Type", "java");
+        request.addHeader("X-Client-Version", "1.0.0");
 
         return request;
     }
