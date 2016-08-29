@@ -3,7 +3,9 @@ package com.weeblycloud;
 import com.weeblycloud.utils.*;
 import java.util.HashMap;
 import java.util.ArrayList;
-import com.google.gson.*;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonArray;
 
 /**
  * Represents a Weebly Cloud blog.
@@ -25,8 +27,13 @@ public class Blog extends CloudResource {
      * @param existing JsonObject to use as the Blog's properties if initialize
      *          is false.
      */
-    public Blog(String userId, String siteId, String blogId, boolean initialize,
-            JsonObject existing) throws CloudException {
+    public Blog(
+        String userId,
+        String siteId,
+        String blogId,
+        boolean initialize,
+        JsonObject existing
+    ) throws CloudException {
         super("user/"+userId+"/site/"+siteId+"/blog/"+blogId, initialize, existing);
         this.userId = userId;
         this.siteId = siteId;
@@ -43,8 +50,12 @@ public class Blog extends CloudResource {
      *          from the server upon instantiation. The properties can later
      *          be retrieved by calling get().
      */
-    public Blog(String userId, String siteId, String blogId, boolean initialize)
-            throws CloudException {
+    public Blog(
+        String userId,
+        String siteId,
+        String blogId,
+        boolean initialize
+    ) throws CloudException {
         this(userId, siteId, blogId, initialize, null);
     }
 

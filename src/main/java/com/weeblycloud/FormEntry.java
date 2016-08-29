@@ -3,7 +3,9 @@ package com.weeblycloud;
 import com.weeblycloud.utils.*;
 import java.util.HashMap;
 import java.util.ArrayList;
-import com.google.gson.*;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonArray;
 
 /**
 * Represents an entry on a form in a Weebly Cloud site.
@@ -27,8 +29,14 @@ public class FormEntry extends CloudResource {
      * @param existing JsonObject to use as the FormEntry's properties if initialize
      *          is false.
      */
-    public FormEntry(String userId, String siteId, String formId, String formEntryId,
-            boolean initialize, JsonObject existing) throws CloudException {
+    public FormEntry(
+        String userId,
+        String siteId,
+        String formId,
+        String formEntryId,
+        boolean initialize,
+        JsonObject existing
+    ) throws CloudException {
         super(
             "user/"+userId+"/site/"+siteId+"/form/"+formId+"/entry/"+formEntryId,
             initialize,
@@ -51,8 +59,13 @@ public class FormEntry extends CloudResource {
      *          from the server upon instantiation. The properties can later
      *          be retrieved by calling get().
      */
-    public FormEntry(String userId, String siteId, String formId, String formEntryId, 
-            boolean initialize) throws CloudException {
+    public FormEntry(
+        String userId,
+        String siteId,
+        String formId,
+        String formEntryId,
+        boolean initialize
+    ) throws CloudException {
         this(userId, siteId, formId, formEntryId, initialize, null);
     }
 
@@ -64,8 +77,12 @@ public class FormEntry extends CloudResource {
      * @param formId ID of the form this form entry belongs to.
      * @param formEntryId ID of an existing form entry.
      */
-    public FormEntry(String userId, String siteId, String formId, String formEntryId) 
-            throws CloudException {
+    public FormEntry(
+        String userId,
+        String siteId,
+        String formId,
+        String formEntryId
+    ) throws CloudException {
         this(userId, siteId, formId, formEntryId, true, null);
     }
 

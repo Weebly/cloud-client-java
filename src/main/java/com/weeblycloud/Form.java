@@ -3,7 +3,9 @@ package com.weeblycloud;
 import com.weeblycloud.utils.*;
 import java.util.HashMap;
 import java.util.ArrayList;
-import com.google.gson.*;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonArray;
 
 /**
 * Represents a form on a Weebly Cloud site.
@@ -25,8 +27,13 @@ public class Form extends CloudResource {
      * @param existing JsonObject to use as the Form's properties if initialize
      *          is false.
      */
-    public Form(String userId, String siteId, String formId,
-        boolean initialize, JsonObject existing) throws CloudException {
+    public Form(
+        String userId,
+        String siteId,
+        String formId,
+        boolean initialize,
+        JsonObject existing
+    ) throws CloudException {
         super("user/"+userId+"/site/"+siteId+"/form/"+formId, initialize, existing);
         this.userId = userId;
         this.siteId = siteId;
@@ -43,8 +50,12 @@ public class Form extends CloudResource {
      *          from the server upon instantiation. The properties can later
      *          be retrieved by calling get().
      */
-    public Form(String userId, String siteId, String formId, boolean initialize) 
-            throws CloudException {
+    public Form(
+        String userId,
+        String siteId,
+        String formId,
+        boolean initialize
+    ) throws CloudException {
         this(userId, siteId, formId, initialize, null);
     }
 
@@ -55,7 +66,11 @@ public class Form extends CloudResource {
      * @param siteId ID of the site this form belongs to.
      * @param formId ID of an existing form.
      */
-    public Form(String userId, String siteId, String formId) throws CloudException {
+    public Form(
+        String userId,
+        String siteId,
+        String formId
+    ) throws CloudException {
         this(userId, siteId, formId, true, null);
     }
 

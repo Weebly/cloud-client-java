@@ -1,7 +1,5 @@
 package com.weeblycloud;
 
-import com.weeblycloud.utils.*;
-import com.google.gson.*;
 import java.util.HashMap;
 
 /**

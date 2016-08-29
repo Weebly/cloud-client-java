@@ -3,7 +3,9 @@ package com.weeblycloud;
 import com.weeblycloud.utils.*;
 import java.util.HashMap;
 import java.util.ArrayList;
-import com.google.gson.*;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonArray;
 
 /**
 * Represents a Weebly Cloud site.
@@ -100,8 +102,12 @@ public class Site extends CloudResource implements Deletable, Mutable {
      * @param password The password for logging into the host.
      * @param path The file path to publish the site files to.
      */
-    public void setPublishCredentials(String host, String username, String password,
-        String path) throws CloudException {
+    public void setPublishCredentials(
+        String host,
+        String username,
+        String password,
+        String path
+    ) throws CloudException {
         HashMap<String, Object> data = new HashMap<String, Object>();
         data.put("publish_host", host);
         data.put("publish_username", username);

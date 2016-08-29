@@ -3,7 +3,9 @@ package com.weeblycloud;
 import com.weeblycloud.utils.*;
 import java.util.HashMap;
 import java.util.ArrayList;
-import com.google.gson.*;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
 
 /**
 * Represents a Weebly Cloud user.

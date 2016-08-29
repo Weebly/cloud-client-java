@@ -16,8 +16,8 @@ public class CloudList<T extends CloudResource> implements Iterable<T> {
     * to convert a JSON response into an ArrayList of
     * CloudResources.
     */
-    public interface ConvertFunction <A,B,C> {
-        public C apply (A a, B b) throws CloudException;
+    public interface ConvertFunction <A, B, C> {
+        C apply (A a, B b) throws CloudException;
     }
 
     /**

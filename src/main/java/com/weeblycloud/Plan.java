@@ -4,7 +4,9 @@ import com.weeblycloud.utils.*;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Map;
-import com.google.gson.*;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonArray;
 
 /**
 * Represents a plan that can be applied to a Weebly Cloud site.

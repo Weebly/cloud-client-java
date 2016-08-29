@@ -73,7 +73,7 @@ public class CloudClient {
      * @param apiKey
      * @param apiSecret
      */
-    protected CloudClient(String apiKey, String apiSecret) {
+    private CloudClient(String apiKey, String apiSecret) {
         this.apiKey = apiKey;
         this.apiSecret = apiSecret;
     }
@@ -198,6 +198,15 @@ public class CloudClient {
      * Makes a GET request to the Weebly Cloud API.
      *
      * @param url The endpoint url, not including domain or query string.
+     */
+    public CloudResponse get(String url) throws CloudException {
+        return get(url, new HashMap<String, Object>());
+    }
+
+    /**
+     * Makes a GET request to the Weebly Cloud API.
+     *
+     * @param url The endpoint url, not including domain or query string.
      * @param parameters
      */
     public CloudResponse get(String url, HashMap<String, Object> parameters)
@@ -206,21 +215,21 @@ public class CloudClient {
     }
 
     /**
-     * Makes a GET request to the Weebly Cloud API.
-     *
-     * @param url The endpoint url, not including domain or query string.
-     */
-    public CloudResponse get(String url)  throws CloudException {
-        return get(url, new HashMap<String, Object>());
-    }
-
-    /**
      * Makes a DELETE request to the Weebly Cloud API.
      *
      * @param url The endpoint url, not including domain or query string.
      */
-    public CloudResponse delete(String url)  throws CloudException {
+    public CloudResponse delete(String url) throws CloudException {
         return makeRequest(url, "DELETE", new HashMap<String, Object>());
+    }
+
+    /**
+     * Makes a POST request to the Weebly Cloud API.
+     *
+     * @param url The endpoint url, not including domain or query string.
+     */
+    public CloudResponse post(String url) throws CloudException {
+        return post(url, new HashMap<String, Object>());
     }
 
     /**
@@ -232,15 +241,6 @@ public class CloudClient {
     public CloudResponse post(String url, HashMap<String, Object> data)
             throws CloudException {
         return makeRequest(url, "POST", data);
-    }
-
-    /**
-     * Makes a POST request to the Weebly Cloud API.
-     *
-     * @param url The endpoint url, not including domain or query string.
-     */
-    public CloudResponse post(String url)  throws CloudException {
-        return post(url, new HashMap<String, Object>());
     }
 
     /**
@@ -282,7 +282,9 @@ public class CloudClient {
 
             String hexString = String.format("%064x", new BigInteger(1,hash));
             hashString = Base64.getEncoder().encodeToString(hexString.getBytes("utf-8"));
-        } catch (Exception e){
+        } catch (java.security.GeneralSecurityException e){
+            throw new RuntimeException(e);
+        } catch (java.io.UnsupportedEncodingException e){
             throw new RuntimeException(e);
         }
 

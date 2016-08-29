@@ -3,7 +3,9 @@ package com.weeblycloud;
 import com.weeblycloud.utils.*;
 import java.util.HashMap;
 import java.util.ArrayList;
-import com.google.gson.*;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonArray;
 
 /**
 * Represents a page on a Weebly Cloud site.
@@ -25,8 +27,13 @@ public class Page extends CloudResource implements Mutable{
      * @param existing JsonObject to use as the Page's properties if initialize
      *          is false.
      */
-    public Page(String userId, String siteId, String pageId, boolean initialize, 
-            JsonObject existing) throws CloudException {
+    public Page(
+        String userId,
+        String siteId,
+        String pageId,
+        boolean initialize,
+        JsonObject existing
+    ) throws CloudException {
         super("user/"+userId+"/site/"+siteId+"/page/"+pageId, initialize, existing);
         this.userId = userId;
         this.siteId = siteId;
@@ -43,8 +50,12 @@ public class Page extends CloudResource implements Mutable{
      *          from the server upon instantiation. The properties can later
      *          be retrieved by calling get().
      */
-    public Page(String userId, String siteId, String pageId, boolean initialize) 
-            throws CloudException {
+    public Page(
+        String userId,
+        String siteId,
+        String pageId,
+        boolean initialize
+    ) throws CloudException {
         this(userId, siteId, pageId, initialize, null);
     }
 

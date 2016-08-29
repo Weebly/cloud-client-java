@@ -3,7 +3,9 @@ package com.weeblycloud;
 import com.weeblycloud.utils.*;
 import java.util.HashMap;
 import java.util.ArrayList;
-import com.google.gson.*;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonArray;
 
 /**
 * Represents a member of a Weebly Cloud site.
@@ -25,8 +27,13 @@ public class Member extends CloudResource implements Deletable, Mutable{
      * @param existing JsonObject to use as the Member's properties if initialize
      *          is false.
      */
-    public Member(String userId, String siteId, String memberId, boolean initialize, 
-            JsonObject existing) throws CloudException {
+    public Member(
+        String userId,
+        String siteId,
+        String memberId,
+        boolean initialize,
+        JsonObject existing
+    ) throws CloudException {
         super("user/"+userId+"/site/"+siteId+"/member/"+memberId, initialize, existing);
         this.userId = userId;
         this.siteId = siteId;
@@ -43,8 +50,12 @@ public class Member extends CloudResource implements Deletable, Mutable{
      *          from the server upon instantiation. The properties can later
      *          be retrieved by calling get().
      */
-    public Member(String userId, String siteId, String memberId, boolean initialize) 
-            throws CloudException {
+    public Member(
+        String userId,
+        String siteId,
+        String memberId,
+        boolean initialize
+    ) throws CloudException {
         this(userId, siteId, memberId, initialize, null);
     }
 

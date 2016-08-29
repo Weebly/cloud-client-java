@@ -2,7 +2,7 @@ package com.weeblycloud;
 
 import com.weeblycloud.utils.*;
 import java.util.HashMap;
-import com.google.gson.*;
+import com.google.gson.JsonObject;
 
 /**
 * Represents a Weebly Cloud admin account.

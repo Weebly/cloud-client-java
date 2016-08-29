@@ -3,7 +3,9 @@ package com.weeblycloud;
 import com.weeblycloud.utils.*;
 import java.util.HashMap;
 import java.util.ArrayList;
-import com.google.gson.*;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonArray;
 
 /**
 * Represents a blog post.
@@ -27,10 +29,19 @@ public class BlogPost extends CloudResource implements Deletable, Mutable {
      * @param existing JsonObject to use as the BlogPost's properties if initialize
      *          is false.
      */
-    public BlogPost(String userId, String siteId, String blogId, String blogPostId,
-            boolean initialize, JsonObject existing) throws CloudException {
-        super("user/"+userId+"/site/"+siteId+"/blog/"+blogId+"/post/"+blogPostId,
-            initialize, existing);
+    public BlogPost(
+        String userId,
+        String siteId,
+        String blogId,
+        String blogPostId,
+        boolean initialize,
+        JsonObject existing
+    ) throws CloudException {
+        super(
+            "user/"+userId+"/site/"+siteId+"/blog/"+blogId+"/post/"+blogPostId,
+            initialize,
+            existing
+        );
         this.userId = userId;
         this.siteId = siteId;
         this.blogId = blogId;
@@ -48,8 +59,13 @@ public class BlogPost extends CloudResource implements Deletable, Mutable {
      *          from the server upon instantiation. The properties can later
      *          be retrieved by calling get().
      */
-    public BlogPost(String userId, String siteId, String blogId, String blogPostId,
-            boolean initialize) throws CloudException {
+    public BlogPost(
+        String userId,
+        String siteId,
+        String blogId,
+        String blogPostId,
+        boolean initialize
+    ) throws CloudException {
         this(userId, siteId, blogId, blogPostId, initialize, null);
     }
 
@@ -61,8 +77,12 @@ public class BlogPost extends CloudResource implements Deletable, Mutable {
      * @param blogId ID of the blog this post belongs to.
      * @param blogPostId ID of an existing post.
      */
-    public BlogPost(String userId, String siteId, String blogId, String blogPostId)
-            throws CloudException {
+    public BlogPost(
+        String userId,
+        String siteId,
+        String blogId,
+        String blogPostId
+    ) throws CloudException {
         this(userId, siteId, blogId, blogPostId, true, null);
     }
 
