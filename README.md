@@ -2,10 +2,6 @@
 
 ## Installation
 
-###Maven
-
-
-
 
 ### Others
 
