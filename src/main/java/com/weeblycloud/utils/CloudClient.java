@@ -169,11 +169,7 @@ public class CloudClient {
         }
         
         if(dataInBody) {
-            try {
-                ((HttpEntityEnclosingRequestBase) request).setEntity(new StringEntity(content));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+                ((HttpEntityEnclosingRequestBase) request).setEntity(new StringEntity(content,"utf-8"));
         }
 
         request.addHeader("X-Public-Key", apiKey);
